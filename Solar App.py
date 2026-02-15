@@ -7,17 +7,18 @@ Original file is located at
     https://colab.research.google.com/drive/13znMH3vvUjARFhSl7cA7CxzmHXECrvGJ
 """
 
+# -*- coding: utf-8 -*-
+
 import streamlit as st
 import pandas as pd
 import joblib
 
 model = joblib.load("Distance to Solar Noon_prediction_model.pkl")
 
-st.title("Solar Power Prediction App")
+st.title("🌞 Solar Power Prediction App")
 st.write("Predict Distance to Solar Noon")
 
 st.subheader("Enter Input Values")
-
 
 day_of_year = st.number_input("Day of Year", 1, 366)
 year = st.number_input("Year", 2000, 2100)
@@ -26,7 +27,7 @@ day = st.number_input("Day", 1, 31)
 
 first_hour = st.number_input("First Hour of Period", 0, 23)
 
-is_daylight = st.selectbox("Is Daylight", encoder["Is Daylight"].classes_)
+is_daylight = st.selectbox("Is Daylight (0 = No, 1 = Yes)", [0, 1])
 
 avg_temp = st.number_input("Average Temperature (Day)")
 avg_wind_dir = st.number_input("Average Wind Direction (Day)")
