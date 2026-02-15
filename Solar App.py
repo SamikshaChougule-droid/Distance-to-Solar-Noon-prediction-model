@@ -59,11 +59,7 @@ df = pd.DataFrame({
 })
 
 
-for col in encoder:
-    if col in df.columns:
-        df[col] = encoder[col].transform(df[col])
-
-
-if st.button("Predict"):
-    prediction = model.predict(df)
-    st.success(f"Predicted Distance to Solar Noon: {prediction[0]:.2f}")
+if "Is Daylight" in encoder:
+    is_daylight = st.selectbox("Is Daylight", encoder["Is Daylight"].classes_)
+else:
+    is_daylight = st.selectbox("Is Daylight", [0, 1])
